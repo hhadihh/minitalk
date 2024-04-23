@@ -22,6 +22,7 @@ void	print(char *str)
 	{
 		write(1, &str[i], 1);
 		i++;
+		sleep(2);
 	}
 }
 
@@ -37,10 +38,10 @@ void	sig_handler(int signum)
 	}
 }
 
-/*int	main()
+int	main()
 {
 	sig_handler(SIGINT);
 	return (0);
 }
-*/
+
 
