@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:15:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/02 17:42:25 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/02 18:36:35 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int	main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		pid;
 	int		i;
@@ -50,7 +50,8 @@ void	send_char(int pid, char c)
 		else
 			kill(pid, SIGUSR2);
 		c >>= 1;
-		usleep(100);
+		usleep(1000);
 		i++;
 	}
 }
+

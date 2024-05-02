@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:53:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/04/18 18:59:58 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/02 18:16:37 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,16 @@ void	sig_handler(int signum)
 	}
 }
 
-int	main()
+int		ft_atoi(const char *str)
 {
-	sig_handler(SIGINT);
-	return (0);
+	int	result = 0;
+	int	i = 0;
+
+	while (str[i] != '\0')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+
+	return (result);
 }
-
-

@@ -6,7 +6,29 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:15:01 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/02 17:15:02 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/02 18:45:46 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <minitalk.h>
+
+int		main(void)
+{
+	ft_putnbr(getpid());
+	write(1, "\n", 1);
+	
+
+
+	
+	return (0);
+}
+
+void	ft_putnbr(int n)
+{
+	char	c;
+
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	c = n % 10 + '0';
+	write(1, &c, 1);
+}
