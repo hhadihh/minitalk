@@ -6,29 +6,40 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:15:01 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/02 18:45:46 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/02 20:14:53 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
-int		main(void)
+#include "minitalk.h"
+#include <signal.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	main(void)
 {
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
-	
 
-
-	
+	print(Welcome To HADI's Server);
+	while (1)
+	{
+		signal(SIGUSR2, receive_signal);
+		signal(SIGUSR1, receive_signal);
+		pause();
+	}
 	return (0);
 }
 
-void	ft_putnbr(int n)
+void	receive_signal(int sig)
 {
-	char	c;
+		char	bin;
 
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	c = n % 10 + '0';
-	write(1, &c, 1);
+		bin = 0;
+		if (sig == SIGUSR1)
+			bin = (bin << 1) | 1;
+		else if (sig == SIGUSR2)
+			bin = (bin << 1) | 0;			
+		print(bin);
 }
