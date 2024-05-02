@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:53:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/02 20:05:41 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/02 20:26:05 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	print(char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
+	write(1, "\n", 1);
 }
 
 void	sig_handler(int signum)
