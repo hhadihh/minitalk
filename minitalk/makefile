@@ -6,22 +6,14 @@
 #    By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 14:59:02 by hhedjam           #+#    #+#              #
-#    Updated: 2024/05/06 15:10:42 by hhedjam          ###   ########.fr        #
+#    Updated: 2024/05/06 16:18:05 by hhedjam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk
-INCLUDE = includes
-MINITALK = minitalk
-SRC_DIR		= ./
-OBJ_DIR		= obj/
-CC			= @cc
-CFLAGS		= -Wall -Werror -Wextra
-RM			= rm -f
-AR			= ar rcs
+CLIENT_NAME = client
+SERVER_NAME = server
 
 # Colors
-
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;90m
 RED = \033[0;91m
@@ -32,55 +24,76 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-#Sources
 
-SRC_FILES	=		send_char		\
-					receive_signal	\
-					ft_putnbr		\
-					ft_atoi			\
-					print			\
-					sig_handler		\
-				
-		
+# Compiler flags
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3
 
-SRC		 =	 $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ		 =	 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+## Source directory
+#SRC_DIR = ./
 
-###
+# Source files
+SRC_FILES = ./client.c \
+            ./server.c \
+            ./utils.c
 
-OBJF		=	.cache_exists
+## Object directory
+#OBJ_DIR = ./obj/
 
-all:		$(NAME)
+## Include directory
+#INC_DIR = ./
 
-$(NAME):	$(OBJ)
-			@make -C $(MINITALK)
-			@cp minitalk/minitalk.a .
-			@mv minitalk.a $(NAME)
-			@$(AR) $(NAME) $(OBJ)
-			@echo "$(GREEN)	minitalk compiled $(DEF_COLOR)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+#SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
+#OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-$(OBJF):
-			@mkdir -p $(OBJ_DIR)
+# Object files for each executable
+CLIENT_OBJ = $(OBJ_DIR)client.o $(OBJ_DIR)utils.o
+SERVER_OBJ = $(OBJ_DIR)server.o $(OBJ_DIR)utils.o
 
+CTL_DIR = ${SRC_FILES:.c=.o}
+
+#.c.o:
+#	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
+
+## Rule to make the executable
+#$(NAME): $(CTL_DIR)
+#	$(CC) $(CFLAGS) $(CTL_DIR) -o $(NAME)
+
+## Rule to make the object files
+#$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+#	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+
+# Rule to make everything
+#all: $(NAME)
+
+all: $(CLIENT_NAME) $(SERVER_NAME)
+
+# Rule to make the client executable
+$(CLIENT_NAME): $(CLIENT_OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+	@echo "$(MAGENTA)minitalk CLIENT files MADE!$(DEF_COLOR)"
+
+# Rule to make the server executable
+$(SERVER_NAME): $(SERVER_OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+	@echo "$(YELLOW)minitalk SERVER files MADE!$(DEF_COLOR)"
+# Rules to clean
 clean:
-			@$(RM) -rf $(OBJ_DIR)
-			@make clean -C $(MINITALK)
-			@echo "$(BLUE)Les bails ont ete clean !$(DEF_COLOR)"
+	@$(RM) -rf $(CTL_DIR)
+	@echo "$(BLUE)Les bails ont ete clean !$(DEF_COLOR)"
 
-fclean:		clean
-			@$(RM) -f $(NAME)
-			@$(RM) -f $(MINITALK)/minitalk.a
-			@echo "$(CYAN)minitalk executable files cleaned!$(DEF_COLOR)"
-			@echo "$(CYAN)minitalk executable files cleaned!$(DEF_COLOR)"
+fclean: clean
+	@$(RM) -f $(CLIENT_NAME)
+	rm -f $(SERVER_NAME)
+	@echo "$(CYAN)minitalk executable files cleaned!$(DEF_COLOR)"
 
-re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for the ultimate project!$(DEF_COLOR)"
+re: fclean all
+	@echo "$(GREEN)Cleaned and rebuilt everything for the ultimate project!$(DEF_COLOR)"
 
+# Rule to check the norm
 norm:
-			@norminette $(SRC) $(INCLUDE) $(MINITALK) | grep -v Norme -B1 || true
+	norminette $(SRC_FILES) $(INC_DIR)*.h
 
-.PHONY:		all clean fclean re norm
+# Phony targets
+.PHONY: all clean fclean re norm

@@ -6,25 +6,30 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:15:01 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/06 14:48:04 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:37:25 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <minitalk.h>
-#include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "./minitalk.h"
 
 void	receive_signal(int sig)
 {
-		char	bin;
+	static char	bin = 0;
+	static int	bit_count = 0;
 
+	if (sig == SIGUSR1)
+		bin = (bin << 1) | 1;
+	else if (sig == SIGUSR2)
+		bin = (bin << 1) | 0;
+	bit_count++;
+	if (bit_count == 8)
+	{
+		char c = (char)bin;
+		write(1, &c, 1);
 		bin = 0;
-		if (sig == SIGUSR1)
-			bin = (bin << 1) | 1;
-		else if (sig == SIGUSR2)
-			bin = (bin << 1) | 0;			
-		write(1, &bin, 1);
+		bit_count = 0;
+	}
+	
 }
 
 int	main(void)
@@ -38,7 +43,7 @@ int	main(void)
 	{
 		signal(SIGUSR2, receive_signal);
 		signal(SIGUSR1, receive_signal);
-		pause();
+		sleep(1);
 	}
 	return (0);
 }

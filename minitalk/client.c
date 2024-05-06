@@ -6,14 +6,13 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:15:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/02 18:36:35 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:01:09 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-#include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "./minitalk.h"
+
+void	send_char(int pid, char c);
 
 int	main(int argc, char **argv)
 {

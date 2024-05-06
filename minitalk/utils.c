@@ -6,12 +6,11 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:53:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/02 20:26:05 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/06 15:38:40 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
+#include "./minitalk.h"
 
 void	print(char *str)
 {
