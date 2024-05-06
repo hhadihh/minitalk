@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:53:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/06 15:38:40 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:49:55 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,20 @@ void	ft_putnbr(int n)
 		ft_putnbr(n / 10);
 	c = n % 10 + '0';
 	write(1, &c, 1);
+}
+
+char bin_to_char(const char *bin)
+{
+	int decimal = 0;
+	int power = 1;
+	int i;
+
+	i = 7;
+	while (i >= 0)
+	{
+		decimal += (bin[i] - '0') * power;
+		power *= 2;
+		i--;
+	}
+	return (char)decimal;
 }

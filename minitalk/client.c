@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:15:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/06 16:01:09 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/06 18:55:32 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	send_char(int pid, char c)
 	i = 0;
 	while (i < 8)
 	{
+		usleep(1000);
 		if (c & 1)
 			kill(pid, SIGUSR1);
 		else
@@ -53,4 +54,3 @@ void	send_char(int pid, char c)
 		i++;
 	}
 }
-
