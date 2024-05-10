@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:44:04 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/06 18:50:01 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/10 17:47:50 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	ft_putnbr(int n);
 int		ft_atoi(const char *str);
 void	print(char *str);
 void	sig_handler(int signum);
-char	bin_to_char(const char *bin);
+//char	bin_to_char(const char *bin);
+char	*charge_buffer(char *buffer, char c);
+void	ft_putnbr(int n);
+int		ft_strlen(const char *str);
+char	*ft_realloc(char *str, char c);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 14:59:02 by hhedjam           #+#    #+#              #
-#    Updated: 2024/05/06 16:18:05 by hhedjam          ###   ########.fr        #
+#    Updated: 2024/05/10 17:54:54 by hhedjam          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,10 @@ CFLAGS = -Wall -Wextra -Werror -g3
 
 # Source files
 SRC_FILES = ./client.c \
-            ./server.c \
-            ./utils.c
-
+            ./server.c  \
+            ./utils.c	 \
+			./utils2.c
+		 
 ## Object directory
 #OBJ_DIR = ./obj/
 
@@ -48,8 +49,8 @@ SRC_FILES = ./client.c \
 #OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 # Object files for each executable
-CLIENT_OBJ = $(OBJ_DIR)client.o $(OBJ_DIR)utils.o
-SERVER_OBJ = $(OBJ_DIR)server.o $(OBJ_DIR)utils.o
+CLIENT_OBJ = $(OBJ_DIR)client.o $(OBJ_DIR)utils.o $(OBJ_DIR)utils2.o
+SERVER_OBJ = $(OBJ_DIR)server.o $(OBJ_DIR)utils.o $(OBJ_DIR)utils2.o
 
 CTL_DIR = ${SRC_FILES:.c=.o}
 
