@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:53:09 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/10 17:27:39 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/15 14:19:44 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -37,17 +37,18 @@ void	sig_handler(int signum)
 	}
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int	result = 0;
-	int	i = 0;
+	int	result;
+	int	i;
 
+	i = 0;
+	result = 0;
 	while (str[i] != '\0')
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}
-
 	return (result);
 }
 
@@ -60,19 +61,3 @@ void	ft_putnbr(int n)
 	c = n % 10 + '0';
 	write(1, &c, 1);
 }
-
-//char bin_to_char(const char bin)
-//{
-//	int decimal = 0;
-//	int power = 1;
-//	int i;
-
-//	i = 7;
-//	while (i >= 0)
-//	{
-//		decimal += (bin - '0') * power;
-//		power *= 2;
-//		i--;
-//	}
-//	return (char)decimal;
-//}
