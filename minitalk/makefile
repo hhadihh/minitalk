@@ -54,20 +54,7 @@ SERVER_OBJ = $(OBJ_DIR)server.o $(OBJ_DIR)utils.o $(OBJ_DIR)utils2.o
 
 CTL_DIR = ${SRC_FILES:.c=.o}
 
-#.c.o:
-#	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
-
-## Rule to make the executable
-#$(NAME): $(CTL_DIR)
-#	$(CC) $(CFLAGS) $(CTL_DIR) -o $(NAME)
-
-## Rule to make the object files
-#$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-#	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
-
-# Rule to make everything
-#all: $(NAME)
-
+# Rule to make all
 all: $(CLIENT_NAME) $(SERVER_NAME)
 
 # Rule to make the client executable

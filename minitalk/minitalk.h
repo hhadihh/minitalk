@@ -19,14 +19,12 @@
 # include <stdio.h>
 # include <string.h>
 
-// Function declarations
 void	send_char(int pid, char c);
 void	receive_signal(int sig);
 void	ft_putnbr(int n);
 int		ft_atoi(const char *str);
 void	print(char *str);
 void	sig_handler(int signum);
-//char	bin_to_char(const char *bin);
 char	*charge_buffer(char *buffer, char c);
 void	ft_putnbr(int n);
 int		ft_strlen(const char *str);

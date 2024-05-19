@@ -23,6 +23,7 @@ static void	f(char **buffer, char *bin, int *bit_count)
 	}
 	*bin = 0;
 	*bit_count = 0;
+
 	if (*buffer == NULL)
 		return ;
 }
@@ -46,39 +47,6 @@ void	receive_signal(int sig)
 	if (bit_count == 8)
 		f(&buffer, &bin, &bit_count);
 }
-
-//void	receive_signal(int sig)
-//{
-//	static char	bin = 0;
-//	static int	bit_count = 0;
-//	static char	*buffer = NULL;
-
-//	if (!buffer)
-//	{
-//		buffer = (char *)malloc(1);
-//		buffer[0] = '\0';
-//	}
-//	if (sig == SIGUSR1)
-//		bin = (bin << 1) | 1;
-//	else if (sig == SIGUSR2)
-//		bin = bin << 1;
-//	bit_count++;
-//	if (bit_count == 8)
-//	{
-//		f();
-//		buffer = charge_buffer(buffer, bin);
-//		if (bin == 0)
-//		{
-//			print(buffer);
-//			free(buffer);
-//			buffer = NULL;
-//		}
-//		bin = 0;
-//		bit_count = 0;
-//		if (buffer == NULL)
-//			return ;
-//	}
-//}
 
 int	main(void)
 {
