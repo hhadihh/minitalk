@@ -6,7 +6,7 @@
 /*   By: hhedjam <hhedjam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:15:01 by hhedjam           #+#    #+#             */
-/*   Updated: 2024/05/15 17:49:27 by hhedjam          ###   ########.fr       */
+/*   Updated: 2024/05/20 15:01:51 by hhedjam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	f(char **buffer, char *bin, int *bit_count)
 	}
 	*bin = 0;
 	*bit_count = 0;
-
 	if (*buffer == NULL)
 		return ;
 }
